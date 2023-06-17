@@ -1,12 +1,26 @@
 package org.lukas.scala.impatient.exercises.ch02
 
-@main def main01(args: String*): Unit = {
-  println(s"Signum of 13 is ${signum(13)}")
-  println(s"Signum of -13 is ${signum(-13)}")
-  println(s"Signum of 0 is ${signum(0)}")
-}
+import org.lukas.scala.impatient.exercises.Console
+import scala.annotation.tailrec
+import scala.util.{Try, Success, Failure}
+import scala.util.control.NonFatal
 
-def signum(num: Int): Short =
-  if (num == 0) 0
-  else if (num > 0) 1
-  else -1
+// IMPL
+def signum(num: Int): Int = num.sign
+
+// TESTS
+@main def main01(args: String*): Unit = {
+  def testSignum(): Unit = {
+    assert(signum(0) == 0)
+    assert(signum(13) == 1)
+    assert(signum(-13) == -1)
+  }
+
+  Try {
+    testSignum()
+    Console.info("All tests passed!")
+  } match {
+    case Success(_) => ()
+    case Failure(ex) => println(s"Some tests failed: ${ex.getMessage}")
+  }
+}
