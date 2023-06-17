@@ -5,7 +5,7 @@ import org.lukas.scala.impatient.exercises.Test.runTests
 
 def unicodeProduct(str: String): Long = str.map(_.toLong).product
 
-@main def main06(args: String*): Unit = {
+@main def main06to09(args: String*): Unit = {
   runTests(
     "unicodeProduct",
     "should return product of all Unicode values" -> (() => {
