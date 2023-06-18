@@ -2,7 +2,6 @@ package org.lukas.scala.impatient.exercises.ch02
 
 import org.lukas.scala.impatient.exercises.Console
 import org.lukas.scala.impatient.exercises.Test.runTests
-
 import scala.annotation.tailrec
 
 def productForLoop(str: String): Long = (for (c <- str) yield c.toLong).product
@@ -19,6 +18,7 @@ def productTailRecursive(str: String): Long = {
     if (str.isEmpty) acc
     else _product(str drop 1, acc * str(0).toLong)
   }
+
   _product(str, 1)
 }
 
